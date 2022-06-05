@@ -32,7 +32,7 @@ event.on('next', next)
 
 // tratamento para fechamento do programa
 const handler = (err => {
-    console.error(`Total de ${i}`, err?.stack ?? err);
+    console.error(`\nTotal de ${i}`, err?.stack ?? err);
     process.exit(1); // mandatory (as per the Node.js docs)
 });
 
@@ -43,4 +43,4 @@ process.on('SIGINT', handler)
 
 
 event.emit('start',new Date().toISOString())
-setInterval(() => console.log(`Total ${i}`), 2000);
+setInterval(() => {console.clear() ; console.log(`Total ${i}`)}, 2000);

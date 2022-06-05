@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "start": "npm run start:docker; npm run start:rabbit;",
-    "start:event": "node consumer.eventjs",
-    "start:rabbit": "node consumer.rabbitjs",
+    "start": "npm run start:docker && echo '\nwait 15s' && sleep 15 && npm run start:rabbit || echo '\ntry run `npm run start:rabbit\n`'",
+    "start:event": "node consumer.event.js",
+    "start:rabbit": "node consumer.rabbit.js",
     "start:docker": "docker run --rm -d --name amqp -p 5672:5672 -p 8080:15672 rabbitmq:management-alpine",
     "stop": "npm run stop:docker; npm run stop:event;npm run stop:rabbit;",
     "stop:event": "killall node &>/dev/null",
