@@ -4,12 +4,18 @@
     "start:event": "node consumer.event.js",
     "start:rabbit": "node consumer.rabbit.js",
     "start:docker": "docker run --rm -d --name amqp -p 5672:5672 -p 8080:15672 rabbitmq:management-alpine",
+    
     "stop": "npm run stop:docker; npm run stop:event;npm run stop:rabbit;",
     "stop:event": "killall node &>/dev/null",
     "stop:rabbit": "killall node &>/dev/null",
-    "stop:docker": "docker stop amqp &>/dev/null"
+    "stop:docker": "docker stop amqp &>/dev/null",
+
+    "consumer:http": "node consumer.http.js",
+    "consumer:send": "curl 0.0.0.0:1337/send",
+    "consumer:total": "curl 0.0.0.0:1337/total"
   },
   "devDependencies": {
-    "amqplib": "0.9.0"
+    "amqplib": "0.9.0",
+    "express": "^4.18.1"
   }
 }
